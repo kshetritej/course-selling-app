@@ -1,10 +1,13 @@
-import {Schema, model, ObjectId, isObjectIdOrHexString} from "mongoose"
-import { User } from "./user.model"
-import { Course } from "./course.model"
+import mongoose, {Schema, model,  isObjectIdOrHexString} from "mongoose"
+import { User } from "./user.model";
+const ObjectId = mongoose.Types.ObjectId;
+
 
 const purchaseSchema = new Schema ({
-    userId: ObjectId,
+    userId: ObjectId, 
     courseId: ObjectId,
     purchaseDate: Date,
     purchaseExpiryData: Date,
 })
+
+export const Purchase = model("Purchase", purchaseSchema);

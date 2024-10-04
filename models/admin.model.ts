@@ -1,4 +1,5 @@
-import {Schema, model, ObjectId} from 'mongoose';
+import mongoose, {Schema, model } from 'mongoose';
+const ObjectId = mongoose.Types.ObjectId;
 
 const adminSchema = new Schema({
     adminFirstName: String,
@@ -8,7 +9,7 @@ const adminSchema = new Schema({
         unique: true,
     },
     adminPassword: String,
-    adminCourses: ObjectId[],
+    adminCourses: [ObjectId],
 })
 
 export const Admin = model("Admin", adminSchema);
