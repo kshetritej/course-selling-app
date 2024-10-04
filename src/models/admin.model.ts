@@ -2,14 +2,14 @@ import mongoose, {Schema, model } from 'mongoose';
 const ObjectId = mongoose.Types.ObjectId;
 
 const adminSchema = new Schema({
-    adminFirstName: String,
-    adminLastName: String,
-    adminEmail: {
+    firstName: String,
+    lastName: String,
+    email: {
         type: String,
         unique: true,
     },
-    adminPassword: String,
-    adminCourses: [ObjectId],
+    password: String,
+    courses: [ObjectId],
 })
 
 export const Admin = model("Admin", adminSchema);
