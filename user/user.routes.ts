@@ -1,5 +1,5 @@
 const userRouter = require("express").Router();
-userRouter.get("/", (req, res) => {
+userRouter.get("/home", (req, res) => {
     res.send("Hello World");
 })
 
@@ -14,3 +14,5 @@ userRouter.get('/courses', (req, res) => {
 userRouter.post('/purchase', (req, res) => {
 
 })
+
+export {userRouter}

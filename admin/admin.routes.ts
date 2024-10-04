@@ -1,4 +1,5 @@
-const adminRouter = require('express').Router();
+import {Router} from 'express';
+const adminRouter = Router();
 
 
 
@@ -18,3 +19,5 @@ adminRouter.post('/create-course', (req, res) => {
 adminRouter.delete('/courses/:id', (req, res) => {
     res.send("Delete course")
 })
+
+export {adminRouter}
