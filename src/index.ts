@@ -1,4 +1,4 @@
-import express from 'express';
+import express from "express";
 import { connectToDb } from "./configs/db.config";
 import { adminRouter } from "./admin/admin.routes";
 import { userRouter } from "./user/user.routes";
@@ -10,8 +10,9 @@ const app = express();
 app.use(express.json());
 app.use('/', userRouter);
 app.use('/admin', adminRouter);
-app.listen(port, async () => {
-    await connectToDb().then(() => {
+
+app.listen(port, () => {
+    connectToDb().then(() => {
         console.log(`Server is running on port ${port}`);
     });
 })

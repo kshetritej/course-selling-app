@@ -2,7 +2,6 @@
   "name": "cx-api",
   "version": "1.0.0",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,7 +15,9 @@
     "dotenv": "^16.4.5",
     "express": "^4.21.0",
     "mongodb": "^6.9.0",
-    "mongoose": "^8.7.0"
+    "mongoose": "^8.7.0",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.6.2"
   },
   "dependencies": {
     "jsonwebtoken": "^9.0.2"

@@ -1,9 +1,7 @@
 import mongoose from 'mongoose';
-import dotenv from 'dotenv';
 import { envConfig } from './env.config';
 
-dotenv.config();
-
 export const connectToDb = async () => {
+    console.log('Connecting to db...')
     await mongoose.connect(envConfig.MONGO_URL)
 }
