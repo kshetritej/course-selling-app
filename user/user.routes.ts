@@ -1,18 +1,20 @@
+import { Request, Response } from "express";
+
 const userRouter = require("express").Router();
-userRouter.get("/home", (req, res) => {
+userRouter.get("/home", (req: Request, res: Response) => {
     res.send("Hello World");
 })
 
-userRouter.post("/login", (req, res) => {
+userRouter.post("/login", (req: Request, res: Response) => {
 })
 
-userRouter.post("/register", (req, res) => {
+userRouter.post("/register", (req: Request, res: Response) => {
 })
-userRouter.get('/courses', (req, res) => {
+userRouter.get('/courses', (req: Request, res: Response) => {
     res.send("Courses")
 })
-userRouter.post('/purchase', (req, res) => {
+userRouter.post('/purchase', (req: Request, res: Response) => {
 
 })
 
-export {userRouter}
+export { userRouter }

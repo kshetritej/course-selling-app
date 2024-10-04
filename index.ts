@@ -1,14 +1,17 @@
-const express = require("express")
-import {adminRouter} from "./admin/admin.routes";
-import {userRouter} from "./user/user.routes";
+import express from 'express';
+import { connectToDb } from "./configs/db.config";
+import { adminRouter } from "./admin/admin.routes";
+import { userRouter } from "./user/user.routes";
+import { envConfig } from './configs/env.config';
 
-const PORT = 6969;
-
+const port = envConfig.PORT;
 const app = express();
 
 app.use(express.json());
 app.use('/', userRouter);
 app.use('/admin', adminRouter);
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+app.listen(port, async () => {
+    await connectToDb().then(() => {
+        console.log(`Server is running on port ${port}`);
+    });
 })

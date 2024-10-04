@@ -1,8 +1,10 @@
+import { Response, Request, NextFunction } from "express";
+
 const jwt = require('jsonwebtoken');
 const JWT_SECRET = 'secret';
 
-const authMiddleware = (req, res, next) => {
-    const token = req.header.token;
+const authMiddleware = (req:Request , res:Response, next: NextFunction) => {
+    const token = req.header;
 
     if (!token) {
         return res.status(401).send('Unauthorized!');
