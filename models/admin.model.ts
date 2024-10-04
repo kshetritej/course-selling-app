@@ -1,11 +1,14 @@
 import {Schema, model, ObjectId} from 'mongoose';
 
 const adminSchema = new Schema({
-    firstName: String,
-    lastName: String,
-    email: String,
-    password: String,
-    courses: ObjectId[],
+    adminFirstName: String,
+    adminLastName: String,
+    adminEmail: {
+        type: String,
+        unique: true,
+    },
+    adminPassword: String,
+    adminCourses: ObjectId[],
 })
 
 export const Admin = model("Admin", adminSchema);
