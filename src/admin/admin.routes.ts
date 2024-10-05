@@ -82,11 +82,11 @@ adminRouter.put('/course', adminAuthMiddleware, async (req, res) => {
     const admin = req.adminId;
     const { courseName, courseDescription, coursePrice, courseId } = req.body;
 
-    if(!courseId){
-        res.json({"ERROR": "Course Id is required"})
+    if (!courseId) {
+        res.json({ "ERROR": "Course Id is required" })
     }
-    if(!admin){
-    res.json({"ERROR": "NO related course found."})
+    if (!admin) {
+        res.json({ "ERROR": "NO related course found." })
     }
 
     const response = await Course.findOneAndUpdate({ _id: courseId, courseCreatorId: admin }, { courseName, courseDescription, coursePrice }, { new: true });
@@ -99,10 +99,44 @@ adminRouter.put('/course', adminAuthMiddleware, async (req, res) => {
 
 })
 
+//@ts-ignore
+adminRouter.get('/courses', adminAuthMiddleware, async (req, res) => {
+    //@ts-ignore
+    const admin = req.adminId;
+    const response = await Course.find(
+        {
+            courseCreatorId: [admin]
+        }
+    )
+    if (!response) {
+        res.status(400).json({
+            "Error": "No courses found"
+        })
+    }
+    return res.json({
+        "Success": "Courses found",
+        response
+    })
+})
+
 
 //@ts-ignore
-adminRouter.delete('/courses/:id', adminAuthMiddleware, (req, res) => {
-    res.send("Delete course")
+adminRouter.delete('/courses/:id', adminAuthMiddleware, async (req, res) => {
+    //@ts-ignore
+    const admin = req.adminId;
+    const courseId = req.params.id;
+    const respose = await Course.findOneAndDelete({
+        courseCreatorId: admin,
+        _id: courseId
+    })
+    if (!respose) {
+        res.status(400).json({
+            "Error": "Course not deleted"
+        })
+    }
+    return res.json({
+        "Success": "Course deleted successfully"
+    })
 })
 
 export { adminRouter }
