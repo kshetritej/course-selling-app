@@ -40,7 +40,7 @@ userRouter.post("/login", async (req: Request, res: Response) => {
         //@ts-ignore
         const passwordIsCorrect = await bcrypt.compareSync(password, user.password);
         if (passwordIsCorrect) {
-            const token = jwt.sign({user}, envConfig.USER_JWT_SECRET) 
+            const token = jwt.sign({ user }, envConfig.USER_JWT_SECRET)
             res.status(200).json({
                 "token": token,
                 "user": user

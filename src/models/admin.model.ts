@@ -1,4 +1,4 @@
-import mongoose, {Schema, model } from 'mongoose';
+import mongoose, { Schema, model, mongo } from 'mongoose';
 const ObjectId = mongoose.Types.ObjectId;
 
 const adminSchema = new Schema({
@@ -9,7 +9,10 @@ const adminSchema = new Schema({
         unique: true,
     },
     password: String,
-    courses: [ObjectId],
+    courses: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Courses"
+    }]
 })
 
 export const Admin = model("Admin", adminSchema);

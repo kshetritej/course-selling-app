@@ -4,8 +4,14 @@ const ObjectId = mongoose.Types.ObjectId;
 
 
 const purchaseSchema = new Schema ({
-    userId: ObjectId, 
-    courseId: ObjectId,
+    userId: {
+        type:mongoose.Schema.Types.ObjectId,
+        ref: "User"
+    }, 
+    courseId: {
+        type:mongoose.Schema.Types.ObjectId,
+        ref: "Course"
+    },
     purchaseDate: Date,
     purchaseExpiryData: Date,
 })

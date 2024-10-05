@@ -9,7 +9,10 @@ const userSchema = new Schema({
         unique: true,
     },
     password: String,
-    courses:[ObjectId] ,
+    courses:[{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Courses"
+    }] ,
 })
 
 
